@@ -1,0 +1,184 @@
+{% extends 'property/base.html' %}
+{% block body %}
+{% load staticfiles %}
+<!-- content -->
+<div class="body2">
+  <div class="main">
+    <section id="content">
+      <div class="wrapper">
+        <article class="col1">
+          <div id="slider"> <img src="{% static 'property/images/img1.jpg' %}" alt="" title="<strong>Villa Neverland, 2006</strong><span>9 rooms, 3 baths, 6 beds, building size: 5000 sq. ft. &nbsp; &nbsp; &nbsp; Price: $ 600 000 &nbsp; &nbsp; &nbsp; <a href='#'>Read more</a></span>"> <img src="{% static 'property/images/img2.jpg' %}" alt="" title="<strong>Villa Lipsum, 2008</strong><span>8 rooms, 4 baths, 4 beds, building size: 4500 sq. ft. &nbsp; &nbsp; &nbsp; Price: $ 500 000 &nbsp; &nbsp; &nbsp; <a href='#'>Read more</a></span>"> <img src="{% static 'property/images/img3.jpg' %}" alt="" title="<strong>Villa Dolor Sid, 2007</strong><span>11 rooms, 3 baths, 5 beds, building size: 6000 sq. ft. &nbsp; &nbsp; &nbsp; Price: $ 650 000 &nbsp; &nbsp; &nbsp; <a href='#'>Read more</a></span>"> <img src="{% static 'property/images/img4.jpg' %}" alt="" title="<strong>Villa Nemo Enim, 2010</strong><span>5 rooms, 2 baths, 4 beds, building size: 3000 sq. ft. &nbsp; &nbsp; &nbsp; Price: $ 400 000 &nbsp; &nbsp; &nbsp; <a href='#'>Read more</a></span>"> <img src="{% static 'property/images/img5.jpg' %}" alt="" title="<strong>Villa Nam Libero, 2003</strong><span>7 rooms, 4 baths, 6 beds, building size: 7000 sq. ft. &nbsp; &nbsp; &nbsp; Price: $ 700 000 &nbsp; &nbsp; &nbsp; <a href='#'>Read more</a></span>"> </div>
+        </article>
+
+        <article class="col2">
+          <form id="form_1" action="#" method="post">
+            <div class="pad1">
+              <h3>Find Your Property</h3>
+              <div class="row"> City &amp; State, or Zip:<br>
+                <input type="text" class="input" name="add">
+              </div>
+              <div class="row_select"> Search Area:<br>
+                <select name="area">
+                  <option>&nbsp;</option>
+                  <option>Noida</option>
+                  <option>Greater Noida</option>
+                  <option>Kasna</option>
+                </select>
+              </div>
+              <div class="row_select">
+                <div class="cols"> Price Range:<br>
+                  <select name="price1">
+                    <option>&nbsp;</option>
+                    <option>10k/yrd</option>
+                    <option>20k/yrd</option>
+                    <option>30k/yrd</option>
+                    <option>50k/yrd</option>
+                    <option>60k/yrd</option>
+                    <option>70k/yrd</option>
+                    <option>80k/yrd</option>
+                    <option>90k/yrd</option>
+                    <option>100k/yrd</option>
+                    <option>Above</option>
+                  </select>
+                </div>
+                <div class="cols pad_left1"> to:<br>
+                  <select name="price2">
+                    <option>&nbsp;</option>
+                    <option>10k/yrd</option>
+                    <option>20k/yrd</option>
+                    <option>30k/yrd</option>
+                    <option>50k/yrd</option>
+                    <option>60k/yrd</option>
+                    <option>70k/yrd</option>
+                    <option>80k/yrd</option>
+                    <option>90k/yrd</option>
+                    <option>100k/yrd</option>
+                    <option>Above</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row_select">
+                <div class="cols"> Bedroom(s):<br>
+                  <select name="bedroom">
+                    <option>&nbsp;</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>Above</option>
+                  </select>
+                </div>
+                <div class="cols pad_left1"> Bathroom(s):<br>
+                  <select name="bathroom">
+                   <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>Above</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row_select pad_bot1">
+                <div class="cols"> Radius:<br>
+                  <select name="size">
+                    <option>&nbsp;</option>
+                    <option>100yrd</option>
+                    <option>200yrd</option>
+                    <option>300yrd</option>
+                    <option>400yrd</option>
+                    <option>500yrd</option>
+                    <option>Above</option>
+                  </select>
+                </div>
+                <div class="cols pad_left1"> <a href="#" class="button">Proposals</a> </div>
+              </div>
+              Know exactly what you want? <br>
+              Try our <a href="#">Advanced Search</a> </div>
+          </form>
+        </article>
+      </div>
+      <div class="wrapper">
+        <article class="col1">
+          <div class="pad_left1">
+            <h2 class="pad_bot1">Buyers. Sellers. Proprietors. Agents.</h2>
+            <div class="wrapper">
+              <article class="cols">
+                <h4 class="img1">Selling</h4>
+                <p class="pad_bot1"><strong class="color1">Welcome one of <br>
+                  free website templates</strong></p>
+                <p class="pad_bot2"> created by TemplateMonster.com team, optimized for 1024X768 px.</p>
+                <a href="#" class="button">Read more</a> </article>
+              <article class="cols pad_left1">
+                <h4 class="img2">Investing</h4>
+                <p class="pad_bot1"><strong class="color1">Free website template for<br>
+                  Real Estate business</strong></p>
+                <p class="pad_bot2"> goes with PSD source files and without them.</p>
+                <a href="#" class="button">Read more</a> </article>
+              <article class="cols pad_left1">
+                <h4 class="img3">Renting</h4>
+                <p class="pad_bot1"><strong class="color1">Template has several pages</strong></p>
+                <p class="pad_bot2"> <a href="index.html" class="color2">Main</a>, <a href="buying.html" class="color2">Buying</a>, <a href="selling.html" class="color2">Selling</a>, <a href="renting.html" class="color2">Renting</a>, <a href="finance.html" class="color2">Finance</a>, <a href="contacts.html" class="color2">Contacts</a> (note that contact us form – doesn’t work).</p>
+                <a href="#" class="button">Read more</a> </article>
+            </div>
+          </div>
+        </article>
+        <article class="col2">
+          <div class="pad1">
+            <h3>Special Offers</h3>
+            <ul class="list1">
+              <li><a href="#">Home Loan Offer</a></li>
+              <li><a href="#">Free Calculators</a></li>
+              <li><a href="#">Free Loan Tools</a></li>
+              <li><a href="#">Value Your Home</a></li>
+              <li><a href="#">Recently Sold Properties</a></li>
+              <li><a href="#">Suburb Statistics</a></li>
+              <li><a href="#">Compare Property Prices</a></li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+<div class="body3">
+  <div class="main">
+    <section id="content2">
+      <div class="wrapper">
+        <article class="col1">
+          <div class="pad2">
+            <h2>Remodeling Rooms</h2>
+            {% for house in all_houses %}
+              <div class="wrapper pad_bot3">
+              <figure class="left marg_right1"><img src="{{ house.property_pic }}" alt="{{ house.house_no }}" style="height: 200px; width: 300px"></figure>
+              <p class="pad_bot1"><strong class="color2">{{ house.year_built }}, {{ house.no_of_bedroom }}, building size: {{ house.size }} sq. ft.<br>
+                Price: <span class="color1">$ {{ house.price }}</span></strong></p>
+              <p class="pad_bot2"></p>
+              <a href="#" class="button">Read more</a>
+            </div>
+              {% endfor %}
+        </article>
+        <article class="col2">
+          <div class="pad1">
+            <h3>Recent News</h3>
+            <div class="wrapper"> <span class="date"><strong>28</strong><span>may</span></span>
+              <p><a href="#" class="color2">Donec consequat risus</a><br>
+                Hendrerit conghdim entum diam metus fringilla nisl, in porta sapien purus quis odiosem... <a href="#">more</a></p>
+            </div>
+            <div class="wrapper"> <span class="date"><strong>25</strong><span>may</span></span>
+              <p><a href="#" class="color2">Nullam dignissim</a><br>
+                Laoreet neque, quis sollicitudin orci tempus etiam viverra leo euismod pulvinar accumsan... <a href="#">more</a></p>
+            </div>
+            <div class="wrapper"> <span class="date"><strong>22</strong><span>may</span></span>
+              <p><a href="#" class="color2">Quisque nunc lorem</a><br>
+                Feugiat nec sodales quis, iaculis sed libero. Cras vel nisl justo, ac posuere est nulla facilisi... <a href="#">more</a></p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+<!-- / content -->
+{% endblock %}
+{% block footer %}
+{% endblock %}
