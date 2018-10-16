@@ -1,0 +1,16 @@
+{% extends 'property/base.html' %}
+{% block body %}
+{% load staticfiles %}
+
+<div class="body2">
+  <div class="main">
+    <section id="content">
+      <div class="wrapper">
+{% for house in houses  %}
+    <p>{{ house.house_no }}</p>
+{% endfor %}
+      </div></section></div></div>
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

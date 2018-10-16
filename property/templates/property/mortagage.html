@@ -1,0 +1,78 @@
+{% extends 'property/base.html' %}
+{% block body %}
+{% load staticfiles %}
+<!-- content -->
+<div class="body2">
+  <div class="main">
+    <section id="content">
+        <span style="text-align: center;
+    text-transform: uppercase;margin: 0px 200px; text-decoration: underline;
+    color: #4CAF50;font-size: 50px;" >Mortagage Centre</span>
+      <div class="wrapper">
+
+        <article class="col1" style="    width: 300px;
+    border: 2px solid black;
+    background: #64403E;
+    padding: 25px;
+    margin: 25px;">
+          <form action="https://www.mlcalc.com/" method="post" onsubmit="return mlcalcCalculate(this)">
+
+    <div class="pad1">
+              <h3>Mortagage Calculator</h3>
+
+
+    <input type="hidden" name="wl" value="en">
+<label>Purchase price: <br><input type="text" name="ma" value="250,000"> $</label><br>
+<label>Down payment: <br><input type="text" name="dp" value="10"> %</label><br>
+<label>Mortgage term: <br><input type="text" name="mt" value="30"> years</label><br>
+<label>Interest rate: <br><input type="text" name="ir" value="5.5"> %</label><br>
+<label>Property tax: <br><input type="text" name="pt" value="3,000"> $</label><br>
+<label>Property insurance:<br> <input type="text" name="pi" value="1,500"> $</label><br>
+<label>PMI: <br><input type="text" name="mi" value="0.52"> %</label><br>
+<label>First payment date (month): <br><input type="text" name="sm" value="3"></label><br>
+<label>First payment date (year): <br><input type="text" name="sy" value="2010"></label><br>
+<label>Amortization:<br>
+   <label><input type="radio" name="as" value="year" checked="checked"> show by year</label><br>
+   <label><input type="radio" name="as" value="month"> show by month</label><br>
+   <label><input type="radio" name="as" value="none"> don't show</label><br>
+</label>
+<input type="submit" class="button" value="Calculate">
+    </div>
+</form>
+        </article>
+
+                <article class="col2" style="    width: 300px;
+    border: 2px solid black;
+    background: #64403E;
+    padding: 25px;
+    margin: 25px 100px;>
+
+<br>
+<form action="https://www.mlcalc.com/" method="post" onsubmit="return mlcalcCalculate(this)" style="background : black">
+ <div class="pad1">
+              <h3>Loan Calculator</h3>
+
+    <input type="hidden" name="wl" value="en">
+<label>Loan amount: <input type="text" name="la" value="150,000"> $</label><br>
+<label>Loan term: <input type="text" name="lt" value="15"> years</label><br>
+<label>Interest rate: <input type="text" name="ir" value="5.5"> %</label><br>
+<label>First payment date (month): <input type="text" name="sm" value="3"></label><br>
+<label>First payment date (year): <input type="text" name="sy" value="2010"></label><br>
+<label>Amortization:<br>
+   <label><input type="radio" name="as" value="year" checked="checked"> show by year</label><br>
+   <label><input type="radio" name="as" value="month"> show by month</label><br>
+   <label><input type="radio" name="as" value="none"> don't show</label><br>
+</label>
+<input type="submit"  class="button" value="Calculate">
+ </div>
+</form>
+
+
+        </article>
+      </div>
+          </section>
+  </div>
+</div>
+{% endblock %}
+{% block footer %}
+{% endblock %}

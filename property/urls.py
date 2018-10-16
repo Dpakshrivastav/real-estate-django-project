@@ -8,6 +8,10 @@ urlpatterns = [
     url(r'^renting/$', views.RentingView.as_view(), name='renting'),
     url(r'^selling/$', views.SellingView.as_view(), name='selling'),
     url(r'^contact/$', views.ContactView.as_view(), name='contact'),
+    url(r'^search/$', views.find_property, name='search'),
+    url(r'^mortagage/$', views.mortagage, name='mortagage'),
+    url(r'^homevalue/$', views.homevalue, name='homevalue'),
+    url(r'^predict/$', views.predict, name='predict'),
     # url(r'^find_property/$', views.find_property(), name='findproperty'),
     url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
 

@@ -23,91 +23,89 @@
             </form>
           </div>
         </article>
-
         <article class="col2">
-          <form id="form_1" action="#" method="post">
+          <form id="form_1" action="{% url 'search' %}" method="get" name="findproperty" onsubmit="return validateForm()">
             <div class="pad1">
               <h3>Find Your Property</h3>
               <div class="row"> City &amp; State, or Zip:<br>
-                <input type="text" class="input" name="add">
+                <input type="textfield" class="input" name="address" value="address" placeholder="State/City or Zip Code" required>
               </div>
               <div class="row_select"> Search Area:<br>
-                <select name="area">
-                  <option>&nbsp;</option>
-                  <option>Noida</option>
-                  <option>Greater Noida</option>
-                  <option>Kasna</option>
+                <select name="area" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="noida">Noida</option>
+                  <option value="greater noida">Greater Noida</option>
+                  <option value="kasna">Kasna</option>
                 </select>
               </div>
               <div class="row_select">
                 <div class="cols"> Price Range:<br>
-                  <select name="price1">
-                    <option>&nbsp;</option>
-                    <option>10k/yrd</option>
-                    <option>20k/yrd</option>
-                    <option>30k/yrd</option>
-                    <option>50k/yrd</option>
-                    <option>60k/yrd</option>
-                    <option>70k/yrd</option>
-                    <option>80k/yrd</option>
-                    <option>90k/yrd</option>
-                    <option>100k/yrd</option>
-                    <option>Above</option>
+                  <select name="price" required>
+                    <option value="" selected>&nbsp;</option>
+                    <option value="1000">10yrd</option>
+                    <option value="2000">20k/yrd</option>
+                    <option value="3000">30k/yrd</option>
+                    <option value="4000">50k/yrd</option>
+                    <option value="5000">60k/yrd</option>
+                    <option value="6000">70k/yrd</option>
+                    <option value="7000" >80k/yrd</option>
+                    <option value="8000">90k/yrd</option>
+                    <option value="9000">100k/yrd</option>
+                    <option value="10000">Above</option>
                   </select>
                 </div>
                 <div class="cols pad_left1"> to:<br>
-                  <select name="price2">
-                    <option>&nbsp;</option>
-                    <option>10k/yrd</option>
-                    <option>20k/yrd</option>
-                    <option>30k/yrd</option>
-                    <option>50k/yrd</option>
-                    <option>60k/yrd</option>
-                    <option>70k/yrd</option>
-                    <option>80k/yrd</option>
-                    <option>90k/yrd</option>
-                    <option>100k/yrd</option>
-                    <option>Above</option>
+                  <select name="price2" required>
+                    <option value="" selected>&nbsp;</option>
+                    <option value="1000">10k/yrd</option>
+                    <option value="2000">20k/yrd</option>
+                    <option value="3000">30k/yrd</option>
+                    <option value="4000">40k/yrd</option>
+                    <option value="5000">50k/yrd</option>
+                    <option value="6000">60k/yrd</option>
+                    <option value="7000">70k/yrd</option>
+                    <option value="8000">80k/yrd</option>
+                    <option value="9000">90k/yrd</option>
+                    <option value="10000">100k/yrd</option>
+                    <option value="100000000">Above</option>
                   </select>
                 </div>
               </div>
               <div class="row_select">
                 <div class="cols"> Bedroom(s):<br>
-                  <select name="bedroom">
-                    <option>&nbsp;</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>Above</option>
+                  <select name="bedroom" required>
+                    <option value="" selected>&nbsp;</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="20">Above</option>
                   </select>
                 </div>
                 <div class="cols pad_left1"> Bathroom(s):<br>
-                  <select name="bathroom">
-                   <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>Above</option>
+                  <select name="bathroom" required>
+                   <option value="1" selected>1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="30">Above</option>
                   </select>
                 </div>
               </div>
               <div class="row_select pad_bot1">
                 <div class="cols"> Radius:<br>
-                  <select name="size">
-                    <option>&nbsp;</option>
-                    <option>100yrd</option>
-                    <option>200yrd</option>
-                    <option>300yrd</option>
-                    <option>400yrd</option>
-                    <option>500yrd</option>
-                    <option>Above</option>
+                  <select name="size" required>
+                    <option value="" selected>&nbsp;</option>
+                    <option value="100">100yrd</option>
+                    <option value="200">200yrd</option>
+                    <option value="300">300yrd</option>
+                    <option value="400">400yrd</option>
+                    <option value="500">500yrd</option>
+                    <option value="10000000000">Above</option>
                   </select>
                 </div>
-                <div class="cols pad_left1"> <a href="#" class="button">Proposals</a> </div>
+                <div class="cols pad_left1"> <input class="button" type="submit" value="Find Property"> </div>
               </div>
-              Know exactly what you want? <br>
-              Try our <a href="#">Advanced Search</a> </div>
           </form>
         </article>
       </div>

@@ -1,0 +1,185 @@
+{% extends 'property/base.html' %}
+{% block body %}
+{% load staticfiles %}
+<style>
+    input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+   .button-new{
+    width: 100%;
+    padding: 0px 0px;
+    margin: 0px 0px 100px;
+    box-sizing: border-box;
+    background: green;
+
+}
+</style>
+<!-- content -->
+
+<div class="body2">
+  <div class="main">
+    <section id="content">
+      <div class="wrapper">
+        <article class="col1" >
+          <div class="pad2">
+            <h2 class="pad_bot1 pad_top1">Home Value Estimator</h2>
+            <div class="wrapper">
+              <figure class="left marg_right1"><img src="images/page3_img1.jpg" alt=""></figure>
+              <p class="pad_bot1 color2">Vestibulum porttitor sem mattis eros posuere vitae tristique justo congue curabitur consectetur ante at arcu mollis aliquam.</p>
+              <p>Maecenas quis lacus eu tortor blandit venenatis aliquam sit amet arcu justo in commodo consectetur lacus ac ultrices cras porta dignissim turpis fermentum porttitor aenean scelerisque nunc vel turpis faucibus vestibulum aenean volutpat iaculis nunc, sed accumsan lacus imperdiet eu. Nullam a velit felis, eget luctus elit.</p>
+            </div>
+            <p>Nulla augue lorem, sodales et pharetra et, porttitor vel leo. Phasellus at mi nec sem sodales egestas et vitae enim. Praesent interdum, nulla at suscipit rhoncus, lacus ligula tristique enim, vitae suscipit quam leo non leo. Donec in metus libero, quis faucibus purus. Duis sit amet risus eros. In hac habitasse platea dictumst. Donec tellus tellus, sodales pellentesque ullamcorper euismod neque.</p>
+            <a href="#" class="button">Read more</a> </div>
+        </article>
+
+                <article class="col2" >
+                    <!--(MSZoningNums, MSSubClass, UtilitiesNums, StreetNums, SaleConditionNums, OverallQual, GarageCars, GarageArea, )-->
+          <form action="{% url 'predict' %}" method="get" name="predict" onsubmit="return validateForm()" class="form">
+            <div class="pad1">
+              <h3>Estimate Value for Your Home</h3>
+              <div class="row_select">MSZoning<br>
+                <select name="mszone" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">RL</option>
+                  <option value="1">RM</option>
+                  <option value="2">C(ALL)</option>
+                  <option value="3">FV</option>
+                  <option value="4">RH</option>
+                </select>
+              </div>
+
+              <div class="row"> MSSUBCLASS<br>
+                <input type="number" class="input"name="mssubclass" value="mssubclass" placeholder="" required>
+              </div>
+              <div class="row_select">Utilities<br>
+                <select name="utilities" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">All Public</option>
+                  <option value="1">NoSeWa</option>
+                </select>
+              </div>
+              <div class="row_select">Street<br>
+                <select name="street" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">PAVE</option>
+                  <option value="1">GRVL</option>
+                </select>
+              </div>
+              <div class="row_select">Sale Conditions<br>
+                <select name="salecondition" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">Normal</option>
+                  <option value="1">Abnormal</option>
+                  <option value="2">Partial</option>
+                  <option value="3">AdjLand</option>
+                  <option value="5">Allca</option>
+                  <option value="6">Family</option>
+                </select>
+              </div>
+              <div class="row_select">Over All Quality<br>
+                <select name="overallqual" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div class="row_select">No of Cars fit in your garage<br>
+                <select name="garagecars" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="row">Garage Area In Yards<br>
+                <input type="number" class="input" name="garagearea" value="mssubclass" placeholder="" required>
+              </div>
+              <div class="row">Total Basement Area<br>
+                <input type="number" class="input" name="bsmtarea" value="mssubclass" placeholder="" required>
+              </div>
+              <div class="row">1st Floor Area<br>
+                <input type="number" class="input" name="fstfloorarea" value="mssubclass" placeholder="" required>
+              </div>
+              <div class="row_select">Full Bath<br>
+                <select name="fullbath" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+
+              <div class="row">Year Built<br>
+                <input type="number" class="input" name="yearbuilt" value="mssubclass" placeholder="" required>
+              </div>
+              <div class="row">Lot Area<br>
+                <input type="number" class="input" name="lotarea" value="mssubclass" placeholder="" required>
+              </div>
+
+
+              <div class="row_select">Kitchen Quality<br>
+                <select name="kitchen" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="1">Fair</option>
+                  <option value="2">Good</option>
+                    <option value="3">Very Good</option>
+                    <option value="0">Excellent</option>
+
+                </select>
+              </div>
+
+              <!--TotalBsmtSF, 1stFlrSF, FullBath, YearBuilt, LotArea, KitchenNums, LotArea-->
+                <div class="pad_left1"> <input class="button button-new" type="submit" value="Find Property"> </div>
+              </div>
+          </form>
+        </article>
+      </div>
+      <div class="wrapper">
+        <article class="col1">
+          <div class="pad2">
+            <h2 class="pad_bot1">Mortgage Center</h2>
+            <p class="color2">Nam in dolor eget dolor ultricies dapibus non nec nisl. Nunc interdum convallis est in dictum. Mauris elementum dapibus tortor, et posuere libero vulputate quis. Nam imperdiet, mi in mollis adipiscing, leo massa tincidunt augue, id semper nunc nulla in neque egestas neque ut risus venenatis eget aliquet.</p>
+            <div class="wrapper">
+              <figure class="left marg_right1"><img src="images/page3_img2.jpg" alt=""></figure>
+              <p>Integer dui leo, dignissim ut interdum ac, ultricies a risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus<br>
+                mus. Curabitur dignissim nunc sit amet odio pharetra hendrerit. Nulla<br>
+                justo ante, posuere sed hendrerit et, lacinia ultricies ligula. Integer ac<br>
+                lacus vel massa venenatis suscipit in vel nulla. Donec quis placerat erat. Nam id lectus at lacus ullamcorper viverra. Mauris lacinia rutrum purus<br>
+                quis pretium.</p>
+            </div>
+            <p>Pellentesque in tortor quam. Quisque et risus dolor, in consequat nunc. Vivamus sagittis consectetur nisi eget luctus. Maecenas pellentesque placerat dui in iaculis. Aenean sit amet felis risus.</p>
+            <a href="{% url 'mortagage' %}" class="button">Read more</a> </div>
+        </article>
+        <article class="col2">
+          <div class="pad1">
+            <h3>Find Sales</h3>
+            <p><strong>Vestibulum imperdiet ante sit amet tortor pellentesque volutpat. Phasellus lobortis mauris id ligula convallis non imperdiet magna adipiscing. In odio ante, accumsan id convallis ac arcu. </strong></p>
+            <p>Sed dapibus mi sit amet justo faucibus nec porttitor magna feugiat. Sed vulputate consequat bibendum. Curabitur mollis posuere lectus, quis mattis libero dictum vitae. Curabitur sollicitudin, purus in fringilla lobortis, lacus nulla faucibus ipsum, porta.</p>
+            <a href="#" class="button">Read more</a> </div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+{% endblock %}
+{% block footer %}
+{% endblock %}
+
