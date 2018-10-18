@@ -8,18 +8,18 @@
         <article class="col1">
           <div class="pad2">
             <h2 class="pad_bot1 pad_top1">Contact Form</h2>
-            <form id="ContactForm" action="#">
+            <form id="ContactForm" action="{% url 'contactus' %}">
               <div>
                 <div  class="wrapper"> <span>Your Name:</span>
-                  <input type="text" class="input" >
+                  <input type="text" class="input" name="name">
                 </div>
                 <div  class="wrapper"> <span>Your E-mail:</span>
-                  <input type="text" class="input" >
+                  <input type="text" class="input" name="email">
                 </div>
                 <div  class="textarea_box"> <span>Your Message:</span>
-                  <textarea name="textarea" cols="1" rows="1"></textarea>
+                  <textarea name="msg" cols="1" rows="1"></textarea>
                 </div>
-                <span>&nbsp;</span> <a href="#" class="button">Clear</a> <a href="#" class="button">Send</a> </div>
+                <span>&nbsp;</span> <input type="submit" name="submit" value="clear" class="button"> <input type="submit" name="send" value="send" class="button"></div>
             </form>
           </div>
         </article>
@@ -28,7 +28,7 @@
             <div class="pad1">
               <h3>Find Your Property</h3>
               <div class="row"> City &amp; State, or Zip:<br>
-                <input type="textfield" class="input" name="address" value="address" placeholder="State/City or Zip Code" required>
+                <input type="textfield" class="input" name="address" placeholder="State/City or Zip Code" required>
               </div>
               <div class="row_select"> Search Area:<br>
                 <select name="area" required>
@@ -113,55 +113,46 @@
         <article class="col1">
           <div class="pad2">
             <h2 class="pad_bot1">Useful Links</h2>
-            <p class="pad_bot1"><strong>Integer dui leo, dignissim ut interdum ac, ultricies a risus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur dignissim nunc sit amet odio pharetra hendrerit. </strong></p>
-            <p class="pad_bot2">Nulla justo ante, posuere sed hendrerit et, lacinia ultricies ligula. Integer ac lacus vel massa venenatis suscipit in vel nulla. Donec quis placerat erat. Nam id lectus at lacus ullamcorper viverra. Mauris lacinia rutrum purus quis pretium. Pellentesque in tortor quam. Quisque et risus dolor, in consequat nunc. Vivamus sagittis consectetur nisi eget luctus. Maecenas pellentesque placerat dui in iaculis.</p>
+            <p class="pad_bot1"><strong>Find Useful Links here</strong></p>
           </div>
           <div class="pad_left1">
             <div class="wrapper pad_bot3">
               <article class="cols">
                 <ul class="list2">
-                  <li><a href="#">Maecenas mattis venenatis</a></li>
-                  <li><a href="#">Nam accumsan miac</a></li>
-                  <li><a href="#">Rhoncus luctus erat nisl</a></li>
-                  <li><a href="#">Ultrices neque, vel placerat</a></li>
-                  <li><a href="#">Morbi ut augue ut risus</a></li>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">Buying Estate</a></li>
+                  <li><a href="#">Find Property</a></li>
                 </ul>
               </article>
               <article class="cols pad_left1">
                 <ul class="list2">
-                  <li><a href="#">Quisque eget erat eget</a></li>
-                  <li><a href="#">Laoreet pharetra eget sed</a></li>
-                  <li><a href="#">Vestibulum scelerisque</a></li>
-                  <li><a href="#">Integerros massa viverra quis</a></li>
-                  <li><a href="#">Pharetra ultrices mauris </a></li>
+                  <li><a href="#">Selling Estate</a></li>
+                  <li><a href="#">Renting Estate</a></li>
+                  <li><a href="#">Loan Value Finder</a></li>
                 </ul>
               </article>
               <article class="cols pad_left1">
                 <ul class="list2">
-                  <li><a href="#">Phasellus purus sapien</a></li>
-                  <li><a href="#">Adipiscing et tempus eget</a></li>
-                  <li><a href="#">Faucibus vel leo pellentesque</a></li>
-                  <li><a href="#">Ullamcorper ac dignissim</a></li>
-                  <li><a href="#">Malesuada eget augue</a></li>
+                   <li><a href="#">Finance</a></li>
+                  <li><a href="#">Home Value Estimator</a></li>
+                  <li><a href="#">Mortage Value Finder</a></li>
+
+
                 </ul>
               </article>
             </div>
           </div>
-          <div class="pad2"> <a href="#" class="button">Read more</a> </div>
         </article>
         <article class="col2">
           <div class="pad1">
             <h3>Our Contacts</h3>
-            <div class="address"> 8901 Marmora Road,<br>
-              Glasgow, D04 89GR.<br>
+            <div class="address"> MM Engineering College,<br>
+              Mullana, Ambala<br>
               <span> Freephone:<br>
               Telephone:<br>
-              E-mail: </span> +1 800 559 6580<br>
-              +1 959 603 6035<br>
-              <a href="#">mail@demolink.org</a> </div>
-            <h3 class="pad_top1">Miscellaneous Info</h3>
-            <p>Lorem ipsum dolor sit amet, consecte- tur adipiscing elit. Fusce condimentum ante velit, vel pharetra ipsum. Nulla mi velit, accumsan dictum mattis sed, dictum id nunc. Nullam varius cursus</p>
-            <a href="#" class="button">Read more</a> </div>
+              E-mail: </span>deepakcsgn@gmail.com<br>
+              +919650268873
+              <a href="#">contactus@deepakshrivastav.info</a> </div>
         </article>
       </div>
     </section>

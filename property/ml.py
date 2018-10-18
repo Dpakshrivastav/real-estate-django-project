@@ -16,4 +16,4 @@ def estimate(MSZoningNums, MSSubClass, UtilitiesNums, StreetNums, SaleConditionN
     print(predictions)
 
     lk = np.exp(predictions)
-    return lk
+    return lk[0]

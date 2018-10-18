@@ -1,8 +1,10 @@
 from django.views import generic
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import   render
 from .models import House, HouseAddress, HouseOwnerDetails
 from .ml import estimate
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse
 
 class IndexView(generic.ListView):
     template_name = 'property/index.html'
@@ -103,15 +105,38 @@ def predict(request):
     yearbuilt = request.GET['mszone']
     lotarea = request.GET['mszone']
     kitchen= request.GET['mszone']
-    price = estimate(mszone, mssubclass, utilities, street, salecondition, overallqual, garagecars, garagearea, bsmtarea, fstfloorarea, fullbath, yearbuilt, lotarea, kitchen, lotarea)
-    return render(request, 'property/predict.html', {'price':price})
+    price = estimate(mszone, mssubclass, utilities, street, salecondition, overallqual, garagecars, garagearea, bsmtarea, fstfloorarea, fullbath, yearbuilt,
+                     lotarea, kitchen, lotarea)
+    features = {'mszone':mszone, 'mssubclass':mssubclass, 'utilities':utilities, 'street':street, 'salecondition':salecondition, 'overallqual': overallqual, 'garagecars':garagecars, 'garagearea':garagearea,
+                                                     'bsmtarea': bsmtarea, 'fstfloorarea':fstfloorarea, 'fullbath':fullbath, 'yearbuilt':yearbuilt, 'lotarea':lotarea,
+                                                     'kitchen':kitchen,}
+    return render(request, 'property/predict.html', {'price':round(price), 'features':features.items()})
+
+def contactus(request):
+    subject = ' hello'
+    from_email = 'deepakcsgn@gmail.com'
+    to = 'deepakcsgn@gmail.com'
+    message = 'This is an important message.'
+    try:
+        send_mail(subject, message, from_email, [to], fail_silently=False)
+    except BadHeaderError:
+        return HttpResponse('Invalid header found.')
+    return HttpResponse("<h1>successful</h1>")
+
+
+def houselist(request):
+    ids = House.objects.all().values_list('id', flat=True)
+    print(ids)
+    address = HouseAddress.objects.all()
+    house = House.objects.all()
+    owner = HouseOwnerDetails.objects.all()
+    context = {'ids' : ids, 'address': address, 'house': house, 'owner': owner, 'mylist' : zip(house, address, owner)}
+    return render(request, 'property/propertylist.html', context)
 
 """
-from django.http import HttpResponse, Http404
+fr1om django.http import HttpResponse, Http404
 from django.shortcuts import render
 from .models import House, HouseAddress, HouseOwnerDetails
-
-
 app_name = 'property'
 
 

@@ -134,7 +134,7 @@ function validateForm() {
           <div class="pad1">
             <h3>Special Offers</h3>
             <ul class="list1">
-              <li><a href="#">Home Loan Offer</a></li>
+              <li><a href="{% url 'houselist' %}">Home Loan Offer</a></li>
               <li><a href="#">Free Calculators</a></li>
               <li><a href="#">Free Loan Tools</a></li>
               <li><a href="#">Value Your Home</a></li>
@@ -142,44 +142,6 @@ function validateForm() {
               <li><a href="#">Suburb Statistics</a></li>
               <li><a href="#">Compare Property Prices</a></li>
             </ul>
-          </div>
-        </article>
-      </div>
-    </section>
-  </div>
-</div>
-<div class="body3">
-  <div class="main">
-    <section id="content2">
-      <div class="wrapper">
-        <article class="col1">
-          <div class="pad2">
-            <h2>Remodeling Rooms</h2>
-            {% for house in all_houses %}
-              <div class="wrapper pad_bot3">
-              <figure class="left marg_right1"><img src="{{ house.property_pic }}" alt="{{ house.house_no }}" style="height: 200px; width: 300px"></figure>
-              <p class="pad_bot1"><strong class="color2">{{ house.year_built }}, {{ house.no_of_bedroom }}, building size: {{ house.size }} sq. ft.<br>
-                Price: <span class="color1">$ {{ house.price }}</span></strong></p>
-              <p class="pad_bot2"></p>
-              <a href="#" class="button">Read more</a>
-            </div>
-              {% endfor %}
-        </article>
-        <article class="col2">
-          <div class="pad1">
-            <h3>Recent News</h3>
-            <div class="wrapper"> <span class="date"><strong>28</strong><span>may</span></span>
-              <p><a href="#" class="color2">Donec consequat risus</a><br>
-                Hendrerit conghdim entum diam metus fringilla nisl, in porta sapien purus quis odiosem... <a href="#">more</a></p>
-            </div>
-            <div class="wrapper"> <span class="date"><strong>25</strong><span>may</span></span>
-              <p><a href="#" class="color2">Nullam dignissim</a><br>
-                Laoreet neque, quis sollicitudin orci tempus etiam viverra leo euismod pulvinar accumsan... <a href="#">more</a></p>
-            </div>
-            <div class="wrapper"> <span class="date"><strong>22</strong><span>may</span></span>
-              <p><a href="#" class="color2">Quisque nunc lorem</a><br>
-                Feugiat nec sodales quis, iaculis sed libero. Cras vel nisl justo, ac posuere est nulla facilisi... <a href="#">more</a></p>
-            </div>
           </div>
         </article>
       </div>

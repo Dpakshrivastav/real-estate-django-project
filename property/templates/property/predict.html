@@ -1,8 +1,179 @@
 {% extends 'property/base.html' %}
 {% block body %}
 {% load staticfiles %}
+<style>
+    input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+   .button-new{
+    width: 100%;
+    padding: 0px 0px;
+    margin: 0px 0px 100px;
+    box-sizing: border-box;
+    background: green;
 
-{{ price }}
+
+}
+mlimg {
+    border-radius: 8px;
+    padding:10px 10px;
+    height: 250px;
+    width: 250px;
+}
+</style>
+<div class="body2">
+  <div class="main">
+    <section id="content">
+      <div class="wrapper">
+        <article class="col1">
+          <div class="pad2">
+            <h2 class="pad_bot1 pad_top1">Home Value Estimator</h2>
+            <div class="wrapper">
+              <figure class="left marg_right1"><img src="{% static 'property/images/page3_img1.jpg' %}" alt=""></figure>
+              <h3>The price of the house according the provided features will cost your around {{ price }} Rs./yrd</h3>
+              <h3 class="left right1 pad_top1">The provide features are as follows.</h3><br><br><br><br>
+              {% for k,v in features %}
+                <p class="pad_bot1 color2">{{ k }} = {{ v }}</p>
+              {% endfor %}
+
+            </div>
+          <h3>This factors are affecting the house price</h3>
+            <p>The Estimation of the house done on the bases of Boston Hosing Data Set</p>
+          <figure class="left"><span>This graph is showing how different features are affecting rate for the selling price:</span><a href="http://127.0.0.1:8000/static/property/ml/img1.png"><img src="{% static 'property/ml/img1.png' %}" alt="{{ house.house_no }}" style="height: 600px; width: 600px;"><br><br></a></figure><br>
+            <figure class="left"><span>Graph between Kitchen Quality and Skewed SalePrice</span><a href="http://127.0.0.1:8000/static/property/ml/img2.png"><img class="mlimg" src="{% static 'property/ml/img2.png' %}" alt="{{ house.house_no }}" style="height: 600px; width: 600px"></a><br><br></figure><br>
+            <figure class="left"><span>A graph between pool area and Lotarea showing availiblity with each other</span><a href="http://127.0.0.1:8000/static/property/ml/img3.png"><img class="mlimg" src="{% static 'property/ml/img3.png' %}" alt="{{ house.house_no }}" style="height: 600px; width: 600px"></a><br><br></figure><br>
+            <figure class="left"><span>A graph between PoolArea and SalePrice</span><a href="http://127.0.0.1:8000/static/property/ml/img4.png"><img class="mlimg" src="{% static 'property/ml/img4.png' %}" alt="{{ house.house_no }}" style="height: 600px; width: 600px"></a><br><br></figure><br>
+            <figure class="left"><span>A graph between NO of houses and SalePrice</span><a href="http://127.0.0.1:8000/static/property/ml/img5.png"><img class="mlimg" src="{% static 'property/ml/img5.png' %}" alt="{{ house.house_no }}" style="height: 600px; width: 600px"></a><br><br></figure><br>
+            <figure class="left"><span>A graph between PoolArea and Skewed SalePrice</span><a href="http://127.0.0.1:8000/static/property/ml/img6.png"><img class="mlimg" src="{% static 'property/ml/img6.png' %}" alt="{{ house.house_no }}" style="height: 600px; width: 600px"></a><br><br></figure><br>
+            <figure class="left"><span>A graph between MSSub Class and Skewed SalePrice</span><a href="http://127.0.0.1:8000/static/property/ml/img7.png"><img class="mlimg" src="{% static 'property/ml/img7.png' %}" alt="{{ house.house_no }}" style="height: 600px; width: 600px"></a><br><br></figure><br>
+            <figure class="left"><span>Graph showing availiblity houses with different no of MSSubClass</span><a href="http://127.0.0.1:8000/static/property/ml/img8.png"><img class="mlimg" src="{% static 'property/ml/img8.png' %}" alt="{{ house.house_no }}" style="height: 600px; width: 600px"></a><br><br></figure><br>
+            <figure class="left"><span>Graph showing  Saleprice of house with different no of MSSubClass</span><a href="http://127.0.0.1:8000/static/property/ml/img9.png"><img class="mlimg" src="{% static 'property/ml/img9.png' %}" alt="{{ house.house_no }}" style="height: 600px; width: 600px"></a><br><br></figure><br>
+        </article>
+
+                 <article class="col2" >
+                    <!--(MSZoningNums, MSSubClass, UtilitiesNums, StreetNums, SaleConditionNums, OverallQual, GarageCars, GarageArea, )-->
+          <form action="{% url 'predict' %}" method="get" name="predict" onsubmit="return validateForm()" class="form">
+            <div class="pad1">
+              <h3>Estimate Value for Your Home</h3>
+              <div class="row_select">MSZoning<br>
+                <select name="mszone" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">RL</option>
+                  <option value="1">RM</option>
+                  <option value="2">C(ALL)</option>
+                  <option value="3">FV</option>
+                  <option value="4">RH</option>
+                </select>
+              </div>
+
+              <div class="row"> MSSUBCLASS<br>
+                <input type="number" class="input"name="mssubclass" value="mssubclass" placeholder="" required>
+              </div>
+              <div class="row_select">Utilities<br>
+                <select name="utilities" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">All Public</option>
+                  <option value="1">NoSeWa</option>
+                </select>
+              </div>
+              <div class="row_select">Street<br>
+                <select name="street" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">PAVE</option>
+                  <option value="1">GRVL</option>
+                </select>
+              </div>
+              <div class="row_select">Sale Conditions<br>
+                <select name="salecondition" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">Normal</option>
+                  <option value="1">Abnormal</option>
+                  <option value="2">Partial</option>
+                  <option value="3">AdjLand</option>
+                  <option value="5">Allca</option>
+                  <option value="6">Family</option>
+                </select>
+              </div>
+              <div class="row_select">Over All Quality<br>
+                <select name="overallqual" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div class="row_select">No of Cars fit in your garage<br>
+                <select name="garagecars" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="row">Garage Area In Yards<br>
+                <input type="number" class="input" name="garagearea" value="mssubclass" placeholder="" required>
+              </div>
+              <div class="row">Total Basement Area<br>
+                <input type="number" class="input" name="bsmtarea" value="mssubclass" placeholder="" required>
+              </div>
+              <div class="row">1st Floor Area<br>
+                <input type="number" class="input" name="fstfloorarea" value="mssubclass" placeholder="" required>
+              </div>
+              <div class="row_select">Full Bath<br>
+                <select name="fullbath" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+
+              <div class="row">Year Built<br>
+                <input type="number" class="input" name="yearbuilt" value="mssubclass" placeholder="" required>
+              </div>
+              <div class="row">Lot Area<br>
+                <input type="number" class="input" name="lotarea" value="mssubclass" placeholder="" required>
+              </div>
+
+
+              <div class="row_select">Kitchen Quality<br>
+                <select name="kitchen" required>
+                  <option value="" selected>&nbsp;</option>
+                  <option value="1">Fair</option>
+                  <option value="2">Good</option>
+                    <option value="3">Very Good</option>
+                    <option value="0">Excellent</option>
+
+                </select>
+              </div>
+
+              <!--TotalBsmtSF, 1stFlrSF, FullBath, YearBuilt, LotArea, KitchenNums, LotArea-->
+                <div class="pad_left1"> <input class="button button-new" type="submit" value="Find Property"> </div>
+              </div>
+          </form>
+
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
 
 {% endblock %}
 {% block footer %}

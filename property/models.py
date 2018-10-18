@@ -7,7 +7,7 @@ from django.db import models
 class House(models.Model):
     house_no = models.CharField(max_length=50)
     registry_no = models.CharField(max_length=100)
-    property_pic = models.CharField(max_length=1000)
+    property_pic = models.ImageField(upload_to='media/', height_field=None, width_field=None, max_length=100)
     property_type = models.CharField(max_length=50)
     property_style = models.CharField(max_length=50)
     property_region = models.CharField(max_length=50)
@@ -26,6 +26,7 @@ class HouseOwnerDetails(models.Model):
     house = models.ForeignKey(House, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     contact_no = models.CharField(max_length=50)
+    email = models.EmailField(max_length=254, default='example@example.com')
     city = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     district = models.CharField(max_length=50)
