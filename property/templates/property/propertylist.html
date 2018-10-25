@@ -4,41 +4,48 @@
 
 
 
+<style>
+  .proplist{
+     padding: 5px;
+     margin: 20px;
+  }
+  .propimg{
+     height: 300px;
+     width: 300px;
+     
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+   
 
+  }
+  figure{
+    margin: 5px 5px;
+  }
+</style>
 <div class="body3">
-  <div class="main">
-    <section id="content2">
-      <div class="wrapper">
-        <article class="col1">
-          <div class="pad2">
+  <div style="margin: 0px 140px;">
+  <div class="" style="margin: 30px 15px;">
+    <section id="contkent2">
+      <div class="wrappker">
+        <article class="col">
+          <!--<div class="pad2">-->
             <h2>Remodeling Rooms</h2>
               {% for h, a, o in mylist %}
-              {{ h.house_no }}
-              {{ a.block }}
-              {{ o.city }}
 
+
+          <div style="display: inline-block ">
+            <a href="{% url 'detail' h.id %}">
+            <figure>
+                <img src="{{ h.property_pic.url }}" alt="Trulli" class="propimg">
+                <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+            </figure>
+          </div></a>
               {% endfor %}
-        </article>
-        <article class="col2">
-          <div class="pad1">
-            <h3>Recent News</h3>
-            <div class="wrapper"> <span class="date"><strong>28</strong><span>may</span></span>
-              <p><a href="#" class="color2">Donec consequat risus</a><br>
-                Hendrerit conghdim entum diam metus fringilla nisl, in porta sapien purus quis odiosem... <a href="#">more</a></p>
-            </div>
-            <div class="wrapper"> <span class="date"><strong>25</strong><span>may</span></span>
-              <p><a href="#" class="color2">Nullam dignissim</a><br>
-                Laoreet neque, quis sollicitudin orci tempus etiam viverra leo euismod pulvinar accumsan... <a href="#">more</a></p>
-            </div>
-            <div class="wrapper"> <span class="date"><strong>22</strong><span>may</span></span>
-              <p><a href="#" class="color2">Quisque nunc lorem</a><br>
-                Feugiat nec sodales quis, iaculis sed libero. Cras vel nisl justo, ac posuere est nulla facilisi... <a href="#">more</a></p>
-            </div>
-          </div>
         </article>
       </div>
     </section>
-  </div>
+  </div></div>
 </div>
 
 <!-- / content -->

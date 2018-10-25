@@ -8,7 +8,8 @@
         <article class="col1">
           <div class="pad2">
             <h2 class="pad_bot1 pad_top1">Contact Form</h2>
-            <form id="ContactForm" action="{% url 'contactus' %}">
+            <form id="ContactForm" action="{% url 'contactus' %}" method="post">
+              {% csrf_token %}
               <div>
                 <div  class="wrapper"> <span>Your Name:</span>
                   <input type="text" class="input" name="name">
@@ -19,12 +20,13 @@
                 <div  class="textarea_box"> <span>Your Message:</span>
                   <textarea name="msg" cols="1" rows="1"></textarea>
                 </div>
-                <span>&nbsp;</span> <input type="submit" name="submit" value="clear" class="button"> <input type="submit" name="send" value="send" class="button"></div>
+                <span>&nbsp;</span>  <input type="submit" name="send" value="send" class="button"> <input type="reset" name="clear" value="clear" class="button"></div>
             </form>
           </div>
         </article>
         <article class="col2">
           <form id="form_1" action="{% url 'search' %}" method="get" name="findproperty" onsubmit="return validateForm()">
+
             <div class="pad1">
               <h3>Find Your Property</h3>
               <div class="row"> City &amp; State, or Zip:<br>

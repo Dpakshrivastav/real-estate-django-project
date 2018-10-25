@@ -1,22 +1,24 @@
 {% extends 'property/base.html' %}
 {% block body %}
 {% load staticfiles %}
+{% for i, j, k in detail %}
 <div class="body2">
     <div class="main">
         <section class="content">
             <div class="wrapper">
         <article class="col1">
-                <img src="{{ house.property_pic }}"><br>
+                <img src="{{ i.property_pic.url }}"><br>
 <!--<h1>{{ address.block }}</h1>-->
         </article>
+
       </div>
 
         </section>
     </div>
 
 </div>
-<h3>{{ house.house_no }}</h3>
-
+<h3>{{ i.house_no }}</h3>
+{% endfor   %}
 {% endblock %}
 {% block footer %}
 {% endblock %}

@@ -2,14 +2,50 @@
 {% block body %}
 {% load staticfiles %}
 
-<div class="body2">
-  <div class="main">
-    <section id="content">
-      <div class="wrapper">
-{% for house in houses  %}
-    <p>{{ house.house_no }}</p>
-{% endfor %}
-      </div></section></div></div>
+<style>
+  .proplist{
+     padding: 5px;
+     margin: 20px;
+  }
+  .propimg{
+     height: 300px;
+     width: 300px;
+
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+
+
+  }
+  figure{
+    margin: 5px 5px;
+  }
+          </style>
+<div class="body3">
+  <div style="margin: 0px 140px;">
+  <div class="" style="margin: 30px 15px;">
+    <section id="contkent2">
+      <div class="wrappker">
+        <article class="col">
+          <!--<div class="pad2">-->
+            <h2>Remodeling Rooms</h2>
+              {% for h, a, o in mylist %}
+
+
+          <div style="display: inline-block ">
+            <a href="{% url 'detail' h.id %}">
+            <figure>
+                <img src="{{ h.property_pic.url }}" alt="Trulli" class="propimg">
+                <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+            </figure>
+          </div></a>
+              {% endfor %}
+        </article>
+      </div>
+    </section>
+  </div></div>
+</div>
+
 
 {% endblock %}
 {% block footer %}

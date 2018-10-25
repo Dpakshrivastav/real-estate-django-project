@@ -39,14 +39,24 @@
         </ul>
       </div>
       <nav>
-        <ul id="menu">
-          <li id="menu_active"><a href="{% url 'index' %}">Main Page</a></li>
-          <li><a href="{% url 'buying' %}">Buying Estate</a></li>
-          <li><a href="{% url 'selling' %}">Selling Estate</a></li>
-          <li><a href="{% url 'renting' %}">Renting Estate</a></li>
-          <li><a href="{% url 'finance' %}">Finance</a></li>
+{% if user.is_authenticated %}
+            <ul id="menu">
+          <li id="menu_active"><a href="{% url 'index' %}">HOME</a></li>
+          <li id=""><a href="{% url 'add' %}">Add House to Sell</a></li>
+          <li id=""><a href="#">Add House to Rent</a></li>
+          <li class="end"><a href="#">Add Finance Services</a></li>
+        </ul>
+      {% else %}
+           <ul id="menu">
+          <li id="menu_active"><a href="{% url 'index' %}">HOME</a></li>
+          <li id=""><a href="{% url 'buying' %}">Buying Estate</a></li>
+          <li id=""><a href="{% url 'selling' %}">Selling Estate</a></li>
+          <li id=""><a href="{% url 'renting' %}">Renting Estate</a></li>
+          <li id=""><a href="{% url 'finance' %}">Finance</a></li>
           <li class="end"><a href="{% url 'contact' %}">Contact Us</a></li>
         </ul>
+            {% endif %}
+
       </nav>
     </header>
     <!-- / header -->
@@ -95,8 +105,17 @@ $(window).load(function () {
   <div class="main">
     <!-- footer -->
     <footer> <span class="call">Call Center: <span>+919650268873</span></span> Copyright &copy; <a href="#">deepakshrivastav.com</a> All Rights Reserved<br>
-      Design by <a target="_blank" href="#">DANA (DEEPAK AJAY NAVDEEP ANSHUL)</a>
-      <!-- {%FOOTER_LINK} -->
+      Design by <a target="_blank" href="#">DANA (DEEPAK AJAY NAVDEEP ANSHUL)</a><br>
+
+
+          <div style="display:inline;">
+      {% if user.is_authenticated %}
+             <a href="{% url 'logout' %}">Admin logout</a>
+      {% else %}
+            <a href="{% url 'login' %}">Admin login</a><br>
+            <a href="{% url 'signup' %}">Admin signup (If not registered yet)</a>
+            {% endif %}
+          </div>
     </footer>
     <!-- / footer -->
   </div>

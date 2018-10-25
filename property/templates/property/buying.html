@@ -8,6 +8,14 @@
       <div class="wrapper">
         <article class="col1">
           <div class="pad2">
+            <h2 class="pad_bot1 pad_top1">See List of houses near you </h2>
+            <p class="pad_bot1 color2">Now you can search for your dream anywhere!!</p>
+            <p class="pad_bot1 color2">Whether in your country, state, or locality itself!!!</p>
+            <p class="pad_bot2">Click below LIST OF HOUSES NEAR YOUR </p>
+          </div>
+         <div class="pad_left1">
+            <a href="{% url 'houselist' %}" class="button">Read more</a> </div>
+                      <div class="pad2">
             <h2 class="pad_bot1 pad_top1">About Buying</h2>
             <p class="pad_bot1 color2">Now you can search for your dream anywhere!!</p>
             <p class="pad_bot1 color2">Whether in your country, state, or locality itself!!!</p>
@@ -22,10 +30,10 @@
             <div class="pad1">
               <h3>Find Your Property</h3>
               <div class="row"> City &amp; State, or Zip:<br>
-                <input type="textfield" class="input" name="address" value="address" placeholder="State/City or Zip Code" required>
+                <input type="textfield" class="input" name="address" placeholder="State/City or Zip Code" required>
               </div>
               <div class="row_select"> Search Area:<br>
-                <select name="area" required>
+                <select name="area" placeholder="Area" required>
                   <option value="" selected>&nbsp;</option>
                   <option value="noida">Noida</option>
                   <option value="greater noida">Greater Noida</option>
@@ -34,7 +42,7 @@
               </div>
               <div class="row_select">
                 <div class="cols"> Price Range:<br>
-                  <select name="price" required>
+                  <select name="price" placeholeder="From" required>
                     <option value="" selected>&nbsp;</option>
                     <option value="1000">10yrd</option>
                     <option value="2000">20k/yrd</option>
@@ -49,7 +57,7 @@
                   </select>
                 </div>
                 <div class="cols pad_left1"> to:<br>
-                  <select name="price2" required>
+                  <select name="price2" placeholder = "to" required>
                     <option value="" selected>&nbsp;</option>
                     <option value="1000">10k/yrd</option>
                     <option value="2000">20k/yrd</option>

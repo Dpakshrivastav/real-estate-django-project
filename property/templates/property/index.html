@@ -24,7 +24,7 @@ function validateForm() {
             <div class="pad1">
               <h3>Find Your Property</h3>
               <div class="row"> City &amp; State, or Zip:<br>
-                <input type="textfield" class="input" name="address" value="address" placeholder="State/City or Zip Code" required>
+                <input type="textfield" class="input" name="address" placeholder="State/City or Zip Code" required>
               </div>
               <div class="row_select"> Search Area:<br>
                 <select name="area" required>
@@ -112,21 +112,17 @@ function validateForm() {
             <div class="wrapper">
               <article class="cols">
                 <h4 class="img1">Selling</h4>
-                <p class="pad_bot1"><strong class="color1">Welcome one of <br>
-                  free website templates</strong></p>
-                <p class="pad_bot2"> created by TemplateMonster.com team, optimized for 1024X768 px.</p>
-                <a href="#" class="button">Read more</a> </article>
+                <p class="pad_bot2">Find out best selling house near you </p>
+                <a href="{% url 'selling' %}" class="button">Read more</a> </article>
               <article class="cols pad_left1">
                 <h4 class="img2">Investing</h4>
-                <p class="pad_bot1"><strong class="color1">Free website template for<br>
-                  Real Estate business</strong></p>
-                <p class="pad_bot2"> goes with PSD source files and without them.</p>
-                <a href="#" class="button">Read more</a> </article>
+                <p class="pad_bot2"> Get investment for your house</p><br>
+                <a href="{% url 'finance' %}" class="button">Read more</a> </article>
               <article class="cols pad_left1">
                 <h4 class="img3">Renting</h4>
-                <p class="pad_bot1"><strong class="color1">Template has several pages</strong></p>
-                <p class="pad_bot2"> <a href="index.html" class="color2">Main</a>, <a href="buying.html" class="color2">Buying</a>, <a href="selling.html" class="color2">Selling</a>, <a href="renting.html" class="color2">Renting</a>, <a href="finance.html" class="color2">Finance</a>, <a href="contacts.html" class="color2">Contacts</a> (note that contact us form – doesn’t work).</p>
-                <a href="#" class="button">Read more</a> </article>
+                <p class="pad_bot2">We Provide best house for rent near your
+                </p>
+                <a href="{% url 'finance' %}" class="button">Read more</a> </article>
             </div>
           </div>
         </article>
@@ -135,8 +131,7 @@ function validateForm() {
             <h3>Special Offers</h3>
             <ul class="list1">
               <li><a href="{% url 'houselist' %}">Home Loan Offer</a></li>
-              <li><a href="#">Free Calculators</a></li>
-              <li><a href="#">Free Loan Tools</a></li>
+              <li><a href="{% url 'selling' %}">Free Calculators</a></li>
               <li><a href="#">Value Your Home</a></li>
               <li><a href="#">Recently Sold Properties</a></li>
               <li><a href="#">Suburb Statistics</a></li>

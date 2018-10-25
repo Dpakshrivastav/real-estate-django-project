@@ -1,10 +1,14 @@
 from django.views import generic
 from django.db.models import Q
-from django.shortcuts import   render
+from django.shortcuts import render, redirect
 from .models import House, HouseAddress, HouseOwnerDetails
 from .ml import estimate
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login, authenticate
+from .forms import SignUpForm
+
 
 class IndexView(generic.ListView):
     template_name = 'property/index.html'
@@ -53,17 +57,22 @@ class RentingView(generic.ListView):
     def get_queryset(self):
         return House.objects.all()
 
+#
+# class DetailView(generic.DetailView):
+#     model = House
+#     template_name = 'property/detail.html'
 
-class DetailView(generic.DetailView):
-    model = House
-    template_name = 'property/detail.html'
+def detail(request, house_id):
+    house = House.objects.filter(pk__in=house_id)
+    owner = HouseOwnerDetails.objects.filter(house__in=house)
+    address = HouseAddress.objects.filter(house__in=house)
+    return render(request, 'property/detail.html', {'detail' : zip(house, owner, address)})
 
 
 def find_property(request):
     add = request.GET['address']
     area = request.GET['area']
     price1 = request.GET['price']
-    price1 = int(price1)
     price2 = request.GET['price2']
     bedroom = request.GET['bedroom']
     bathroom = request.GET['bathroom']
@@ -78,7 +87,7 @@ def find_property(request):
     owners = HouseOwnerDetails.objects.filter(id__in=filteredId)
     addresses = HouseAddress.objects.filter(id__in=filteredId)
     # context = { 'address' : address, }
-    context = { 'houses': houses, 'owners': owners,'addresses': addresses, 'filteredId': filteredId, }
+    context = { 'houses': houses, 'owners': owners,'addresses': addresses, 'filteredId': filteredId, 'mylist': zip(houses, addresses, owners)}
     return render(request, 'property/search.html', context)
 
 
@@ -113,15 +122,16 @@ def predict(request):
     return render(request, 'property/predict.html', {'price':round(price), 'features':features.items()})
 
 def contactus(request):
-    subject = ' hello'
-    from_email = 'deepakcsgn@gmail.com'
+    name = request.POST.get('name')
+    subject = 'Query On Website from '
+    from_email = request.POST.get('email')
     to = 'deepakcsgn@gmail.com'
-    message = 'This is an important message.'
+    message = request.POST.get('msg')
     try:
         send_mail(subject, message, from_email, [to], fail_silently=False)
     except BadHeaderError:
         return HttpResponse('Invalid header found.')
-    return HttpResponse("<h1>successful</h1>")
+    return HttpResponse("<h1>Query successfully placed with us</h1><p>We will catch you within a week</p>")
 
 
 def houselist(request):
@@ -133,27 +143,74 @@ def houselist(request):
     context = {'ids' : ids, 'address': address, 'house': house, 'owner': owner, 'mylist' : zip(house, address, owner)}
     return render(request, 'property/propertylist.html', context)
 
-"""
-fr1om django.http import HttpResponse, Http404
-from django.shortcuts import render
-from .models import House, HouseAddress, HouseOwnerDetails
-app_name = 'property'
+
+@login_required
+def home(request):
+    return render(request, 'property/index.html')
 
 
-def index(request):
-    all_houses = House.objects.all()
-    all_address = HouseAddress.objects.all()
-    all_owner = HouseOwnerDetails.objects.all()
-    context = { 'all_houses': all_houses, 'all_address': all_address, 'all_owner': all_owner, }
-    return render(request, 'property/index.html', context)
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('index')
+    else:
+        form = SignUpForm()
+    return render(request, 'property/signup.html', {'form': form})
 
 
-def detail(request, house_id):
-    try:
-        house = House.objects.get(pk=house_id)
-        address = HouseAddress.objects.get(pk=house_id)
-        owner = HouseOwnerDetails.objects.get(pk=house_id)
-    except:
-        raise Http404("there is an error")
-    return render(request, 'property/detail.html', {'house': house, 'address': address, 'owner': owner,})
-"""
+def add(request):
+    if request.method == 'POST' and request.FILES['property_pic']:
+        house_no = request.POST.get('house_no')
+        registry_no = request.POST.get('registry_no')
+        property_pic = request.FILES.get('property_pic')
+        property_type = request.POST.get('property_type')
+        property_style = request.POST.get('property_style')
+        property_region = request.POST.get('property_region')
+        size = request.POST.get('size')
+        no_of_kitchen = request.POST.get('no_of_kitchen')
+        no_of_bedroom = request.POST.get('no_of_bedroom')
+        no_of_bathroom = request.POST.get('no_of_bathroom')
+        year_built = request.POST.get('year_built')
+        price = request.POST.get('price')
+
+        firstname = request.POST.get('firstname')
+        lastname = request.POST.get('lastname')
+        contact_no = request.POST.get('contact_no')
+        email = request.POST.get('email')
+        city = request.POST.get('city')
+        state = request.POST.get('state')
+        district = request.POST.get('district')
+        address = request.POST.get('address')
+        gender = request.POST.get('gender')
+        age = request.POST.get('gender')
+        pin = request.POST.get('pin')
+
+        block = request.POST.get('block')
+        sec = request.POST.get('sec')
+        area = request.POST.get('area')
+        landmark = request.POST.get('landmark')
+        hstate = request.POST.get('hstate')
+        country = request.POST.get('country')
+        hpin = request.POST.get('hpin')
+
+        a = House(house_no=house_no, registry_no=registry_no, property_pic=property_pic, property_style=property_style, property_region=property_region,
+                  property_type=property_type, size=size, no_of_bathroom=no_of_bathroom, no_of_bedroom=no_of_bedroom, no_of_kitchen=no_of_kitchen,
+                  year_built=year_built, price=price)
+        a.save()
+        b=HouseOwnerDetails(house=a, firstname=firstname, lastname=lastname, contact_no=contact_no, email=email, city=city, state=state, district=district,
+                            address=address, gender=gender, age=age, pin=pin)
+        b.save()
+        c=HouseAddress(house=a, block=block, sec=sec, area=area, landmark=landmark, state=hstate, country=country, pin=hpin)
+        c.save()
+        return render(request, 'succeesful')
+    else:
+        return render(request, 'property/addhouse.html')
+
+def adddetail(request):
+    return render(request, 'property/signup.html')

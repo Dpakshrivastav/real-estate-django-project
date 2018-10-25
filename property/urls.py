@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from . import views
-from django.conf import settings
-from  django.conf.urls.static import static
+
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
@@ -18,6 +18,12 @@ urlpatterns = [
     url(r'^homevalue/$', views.homevalue, name='homevalue'),
     url(r'^contactus/$', views.contactus, name='contactus'),
     # url(r'^find_property/$', views.find_property(), name='findproperty'),
-    url(r'^(?P<pk>[0-9]+)/$', views.DetailView.as_view(), name='detail'),
+    url(r'^(?P<house_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^pageadmin/$', views.home, name='home'),
+    url(r'^login/$', auth_views.login, {'template_name': 'property/login.html'}, name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': 'index'}, name='logout'),
+    url(r'^signup/$', views.signup, name='signup'),
+    url(r'^addhouse/$', views.add, name='add'),
+    url(r'^detail/$', views.adddetail, name='adddetail'),
 
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]

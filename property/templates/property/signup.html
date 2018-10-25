@@ -1,0 +1,42 @@
+{% extends 'property/base.html' %}
+
+{% block body %}
+
+
+
+
+
+<div class="body2">
+<div class="main">
+    <section id="content">
+<div class="wrapper" style="padding: 50px 0px">
+<article class="col1">
+          <form id="form_1" method="post" onsubmit="return validateForm()">
+            {% csrf_token %}
+              <div class="pad1">
+              <h3>Sign Up Here</h3>
+
+                {% for field in form %}
+              <div class="row"> {{ field.label_tag }} :<br>
+                  {{ field }}
+                  {% if field.help_text %}
+                  <small>{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+                  {% endfor %}</br>
+   <div class=""> <input class="button" type="submit" value="submit"> </div>
+
+              </div>
+              </div>
+          </form>
+</article>
+</div>
+    </section>
+</div>
+</div>
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

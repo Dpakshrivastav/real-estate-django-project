@@ -25,7 +25,7 @@ SECRET_KEY = '()6mpm(-&7c639yr(^@8vet($-ld_6**q_+u^o54#sh_@hnftw'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -50,15 +50,20 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'deepakcsgn@gmail.com'
+EMAIL_HOST_PASSWORD = '@@nya@123'
+DEFAULT_FROM_EMAIL = 'deepakcsgn@gmail.com'
 
 ROOT_URLCONF = 'housing.urls'
 STATIC_URL = '/static/'
 
 
-MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
+MEDIA_URL = '/media/'
 
 TEMPLATES = [
     {
@@ -122,6 +127,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'home'
 
 # Static files (CSS, JavaScript, Images)
 # h
