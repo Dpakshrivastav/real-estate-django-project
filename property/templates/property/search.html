@@ -2,6 +2,8 @@
 {% block body %}
 {% load staticfiles %}
 
+
+
 <style>
   .proplist{
      padding: 5px;
@@ -20,7 +22,7 @@
   figure{
     margin: 5px 5px;
   }
-          </style>
+</style>
 <div class="body3">
   <div style="margin: 0px 140px;">
   <div class="" style="margin: 30px 15px;">
@@ -35,8 +37,10 @@
           <div style="display: inline-block ">
             <a href="{% url 'detail' h.id %}">
             <figure>
-                <img src="{{ h.property_pic.url }}" alt="Trulli" class="propimg">
-                <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+                <img src="{{ h.property_pic.url }}" alt="{{ h.property_pic }}" class="propimg">
+                <figcaption>{{ h.house_no }}, {{ a.area }}, Contact +91{{ o.contact_no }}</figcaption>
+              <p class="">Rs. {{ h.price }}/yards for {{ h.size }} yards<br>By {{ o.firstname }} at {{ a.area }}<br>click for more detail</p>
+              <p></p>
             </figure>
           </div></a>
               {% endfor %}
@@ -46,7 +50,7 @@
   </div></div>
 </div>
 
-
+<!-- / content -->
 {% endblock %}
 {% block footer %}
 {% endblock %}

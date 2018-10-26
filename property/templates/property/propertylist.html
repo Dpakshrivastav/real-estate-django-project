@@ -37,8 +37,10 @@
           <div style="display: inline-block ">
             <a href="{% url 'detail' h.id %}">
             <figure>
-                <img src="{{ h.property_pic.url }}" alt="Trulli" class="propimg">
-                <figcaption>Fig.1 - Trulli, Puglia, Italy.</figcaption>
+                <img src="{{ h.property_pic.url }}" alt="{{ h.property_pic }}" class="propimg">
+                <figcaption>{{ h.house_no }}, {{ a.area }}, Contact +91{{ o.contact_no }}</figcaption>
+              <p class="">Rs. {{ h.price }}/yards for {{ h.size }} yards<br>By {{ o.firstname }} at {{ a.area }}<br>click for more detail</p>
+              <p></p>
             </figure>
           </div></a>
               {% endfor %}

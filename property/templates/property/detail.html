@@ -1,24 +1,180 @@
-{% extends 'property/base.html' %}
-{% block body %}
 {% load staticfiles %}
-{% for i, j, k in detail %}
-<div class="body2">
-    <div class="main">
-        <section class="content">
-            <div class="wrapper">
-        <article class="col1">
-                <img src="{{ i.property_pic.url }}"><br>
-<!--<h1>{{ address.block }}</h1>-->
-        </article>
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>House Detail</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'property/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'property/css/blog-post.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body>
+{% for h, o, a in detail %}
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1 class="mt-4">House No. : {{ h.house_no }}</h1>
+
+          <!-- Author -->
+          <p class="lead">
+            in
+            <a href="#">{{ a.area }}</a>
+          </p>
+
+          <hr>
+
+          <!-- Date/Time -->
+          <p>Built in {{ h.year_built }}</p>
+
+          <hr>
+
+          <!-- Preview Image -->
+          <img class="" src="{{ h.property_pic.url }}" style="height : 400px; width : 700px;" alt="">
+
+          <hr>
+
+          <!-- Post Content -->
+          <p class="lead">By {{ o.firstname }} {% if o.lastname != None %} {{ o.lastname }} {% endif %}</p>
+
+          <p>Full Detail</p>
+
+                   <ul class="list-group list-group-flush">
+              <li class="list-group-item">Property Style : {{ h.property_style }}</li>
+              <li class="list-group-item">property_region : {{ h.property_region }}</li>
+              <li class="list-group-item">property_type : {{ h.property_type }}</li>
+              <li class="list-group-item">size : {{ h.size }}</li>
+              <li class="list-group-item">no_of_bedroom : {{ h.no_of_bedroom }}</li>
+              <li class="list-group-item">no_of_kitchen : {{ h.no_of_kitchen }}</li>
+              <li class="list-group-item">no_of_bathroom : {{ h.no_of_bathroom }}</li>
+              <li class="list-group-item">Rs.{{ h.price }}/yard for {{ h.size }}Yards</li>
+              <li class="list-group-item">Address<ul>
+                <li class="list-group-item">Block : {{ a.block }}</li>
+                <li class="list-group-item">Sector : {{ a.sec }}</li>
+                <li class="list-group-item">Area : {{ a.area }}</li>
+                <li class="list-group-item">State : {{ a.state }}</li>
+                <li class="list-group-item">Country : {{ a.country }}</li>
+              </ul></li>
+
+          </ul>
+
+          <!-- Comments Form -->
+          <div class="card my-4">
+            <h5 class="card-header">Leave a Comment:</h5>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <textarea class="form-control" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Single Comment -->
+
+          <!-- Comment with nested comments -->
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4">
+
+            <!-- Search Widget -->
+            <div class="card my-4">
+              <h5 class="card-header">Search</h5>
+              <div class="card-body">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search for...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="button">Go!</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          <!-- Categories Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Shortcuts</h5>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'buying' %}">Buying Estate</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'selling' %}">Selling Estate</a>
+                    </li>
+
+                  </ul>
+                </div>
+                <div class="col-lg-6">
+                  <ul class="list-unstyled mb-0">
+                   {% if user.is_authenticated %}
+                    <li>
+                      <a href="{% url 'logout' %}">Admin Logout</a>
+                    </li>
+                    {% else %}
+
+                    <li>
+                      <a href="{% url 'login' %}">Admin Login</a>
+                    </li>
+                    <li>
+                      <a href="{% url 'signup' %}">Admin Signup</a>
+                    </li>
+                    {% endif %}
+                      <li>
+                      <a href="{% url 'contactus' %}">Contact Us</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Side Widget -->
+
+        </div>
 
       </div>
+      <!-- /.row -->
 
-        </section>
     </div>
+    <!-- /.container -->
 
-</div>
-<h3>{{ i.house_no }}</h3>
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; DANA(Deepak Ajay Navdeepa and Anshul)</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'property/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'property/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  </body>
+
+</html>
 {% endfor   %}
-{% endblock %}
-{% block footer %}
-{% endblock %}

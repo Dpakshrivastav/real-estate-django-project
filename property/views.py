@@ -208,7 +208,7 @@ def add(request):
         b.save()
         c=HouseAddress(house=a, block=block, sec=sec, area=area, landmark=landmark, state=hstate, country=country, pin=hpin)
         c.save()
-        return render(request, 'succeesful')
+        return render(request, 'property/successful.html')
     else:
         return render(request, 'property/addhouse.html')
 
